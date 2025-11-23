@@ -1,0 +1,9 @@
+public class InfiniteLoop_Recurssion {
+    static void printHello() {
+        System.out.println("Hello");
+        printHello(); 
+    }
+    public static void main(String[] args) {
+        printHello();
+    }
+}
