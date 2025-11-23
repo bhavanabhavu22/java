@@ -1,0 +1,23 @@
+public class max_using_recursion {
+
+    
+    static int findMax(int[] arr, int index) {
+
+        if (index == arr.length - 1) {
+            return arr[index];
+        }
+
+        int maxRest = findMax(arr, index + 1);
+
+        return Math.max(arr[index], maxRest);
+    }
+
+    public static void main(String[] args) {
+
+        int[] arr = {10, 45, 67, 2, 99, 23};
+
+        int maxValue = findMax(arr, 0);
+
+        System.out.println("Maximum value: " + maxValue);
+    }
+}
