@@ -1,0 +1,23 @@
+ublic class LinearSearchWordIndex {
+    public static void main(String[] args) {
+
+        String sentence = "Java is  powerful programming language";
+        String target = "Java";
+
+        String[] words = sentence.split(" "); 
+        int index = -1;   
+
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].equals(target)) {
+                index = i; 
+                break;
+            }
+        }
+
+        if (index != -1) {
+            System.out.println("The word \"" + target + "\" found at index: " + index);
+        } else {
+            System.out.println("The word \"" + target + "\" is NOT found in the sentence.");
+        }
+    }
+}
