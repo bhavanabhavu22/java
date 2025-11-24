@@ -1,0 +1,22 @@
+public class linear_search_algorithm {
+    public static void main(String args[])
+    {
+        int[] arr={1,2,3,4,5,67,8,9};
+        int target=7;
+        System.out.println(linearsearch(arr, target));
+    }
+    public static int linearsearch(int[] arr, int target)
+    {
+        int i=0;
+        while(i<arr.length)
+        {
+            if(arr[i]==target)
+            {
+                return 1;
+
+            }
+            i++;
+        }
+        return -1;
+    }
+}
