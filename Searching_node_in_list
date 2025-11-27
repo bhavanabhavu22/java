@@ -1,0 +1,43 @@
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+    }
+}
+
+class List {
+    static Node head;
+
+    // Add node at beginning
+    public static void addFirst(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+    }
+
+    // Search node
+    public static boolean search(int key) {
+        Node temp = head;
+        while (temp != null) {
+            if (temp.data == key)
+                return true;
+            temp = temp.next;
+        }
+        return false;
+    }
+}
+
+public class Search_node_list {
+    public static void main(String[] args) {
+
+        // creating list
+        List.addFirst(10);
+        List.addFirst(20);
+        List.addFirst(30);
+
+        System.out.println("Search 20: " + List.search(20));  // true
+        System.out.println("Search 50: " + List.search(50));  // false
+    }
+}
