@@ -1,0 +1,95 @@
+/*write a function to delete a data by using a specific position or index */
+
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+class ListOfFunctions{
+    static Node head;//global variable
+    public static void display(){   //for display no inputs we give
+      Node temp=head;
+      while(temp!=null){
+        System.out.print(temp.data+"->");
+        temp=temp.next;
+      }
+      System.out.println("null");
+    }
+    public static void addfirst(int data){  //adds the node data at the beginning  
+        Node newNode=new Node(data);
+        newNode.next=head;
+        head=newNode;
+    }
+    public static void insert(int data){   //insertion operation
+        Node newNode=new Node(data);
+        if(head==null){
+            head = newNode;
+            return;
+            
+        }
+        Node temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        temp.next=newNode;
+
+    }
+public static void indexInsert(int data,int index){   //insertion at particular index
+     Node newNode=new Node(data);
+     if(index==0){
+        addfirst(data);
+        return;
+    }
+    Node temp=head;
+    for(int i=0;temp!=null && i<index-1;i++){
+        temp=temp.next;
+    }
+    if(temp==null){
+        System.out.println("out of bounds");
+        return;
+    }
+    newNode.next=temp.next;
+    temp.next=newNode;
+}
+public static void indexDelete(int index){
+    if(head == null){
+        System.out.println("list is empty");
+        return;
+    }
+    if(index==0){
+        head=head.next;
+        return;
+    }   
+    Node temp=head;
+    for(int i=0;temp!=null && i<index-1;i++){
+        temp=temp.next;
+    }
+    if(temp == null || temp.next==null){
+        System.out.println("Index out of the bounds");
+        return;
+    }
+    temp.next = temp.next.next;
+
+}
+}
+public class deletionatparticularindex {
+    public static void main(String[] args) {
+        ListOfFunctions.insert(10);
+        ListOfFunctions.insert(50);
+        ListOfFunctions.insert(20);
+        ListOfFunctions.insert(60);
+        ListOfFunctions.addfirst(70);
+
+        System.out.println("Original List:");
+        ListOfFunctions.display();
+         ListOfFunctions.indexInsert(80,3);
+        System.out.println("List after insertion:");
+        ListOfFunctions.display();
+        ListOfFunctions.indexDelete(3);
+        System.out.println("List after deletion:");
+        ListOfFunctions.display();
+    }
+}
