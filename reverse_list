@@ -1,0 +1,71 @@
+/*create a function to reverse a singly linked list 
+logic: Swapping Numbers*/
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int data){
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class ListOfFunctions {
+    static Node head;
+
+    public static void display(){
+        Node temp = head;
+        while(temp != null){
+            System.out.print(temp.data + "->");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+
+    public static void insert(int data){
+        Node newNode = new Node(data);
+        
+        if(head == null){
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+        while(temp.next != null){
+            temp = temp.next;
+        }
+        temp.next = newNode;
+    }
+
+    //Reverse function 
+    public static void reverse(){
+        Node prev = null;
+        Node curr = head;
+        Node next;
+
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+}
+
+
+public class ReverseList {
+    public static void main(String[] args) {
+
+        ListOfFunctions.insert(10);
+        ListOfFunctions.insert(20);
+        ListOfFunctions.insert(30);
+        ListOfFunctions.insert(40);
+      //Original List
+        ListOfFunctions.display();
+        ListOfFunctions.reverse();
+     //Reversed List
+        ListOfFunctions.display();
+    }
+}
