@@ -1,0 +1,72 @@
+/Queues/
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+
+}
+class QueueMethods {
+    private Node front=null;
+    private Node rare=null;
+
+    // Enqueue
+    public void enQueue(int data) {
+        Node newNode=new Node(data);
+        if(rare==null) {
+            rare=front=newNode;
+            return;
+        }
+        rare.next=newNode; //add at last
+        rare=newNode; //move rare
+    }
+
+    //dequeue
+    public void deQueue() {
+        //fornt is empty
+        if(front==null) {
+            System.out.println("Underflow");
+            return;
+        }
+        front=front.next; //move front
+        if(front==null) {
+            rare=null; // queue becomes empty
+        }
+    }
+        //display
+        public void display() {
+        Node temp = front;
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+    public void front() {
+        if (front == null) {
+            System.out.println("Queue is empty");
+            return;
+        }
+        System.out.println("front element: " + front.data);
+    }
+}
+
+
+public class Queues {
+    public static void main(String[] args) {
+        QueueMethods q=new QueueMethods();
+        q.enQueue(10);
+        q.enQueue(20);
+        q.enQueue(30);
+        q.enQueue(40);
+        q.display(); 
+        q.deQueue();
+        q.display();
+        q.front();
+        q.display();
+    }
+
+}
