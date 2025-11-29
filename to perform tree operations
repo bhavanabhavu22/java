@@ -1,0 +1,70 @@
+class Node {
+    int data;
+    Node right;
+    Node left;
+
+    Node(int data) {
+        this.data = data;
+        left = right = null;
+    }
+}
+
+class BinaryTree {
+    Node root;
+
+    BinaryTree() {
+        this.root = null;
+    }
+
+    // Inorder Traversal (Left → Root → Right)
+    public void inOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+       //INORDER
+        inOrder(node.left);          // Left
+        System.out.print(node.data + " ");  // Root
+        inOrder(node.right);         // Right
+    }
+    //PREORDER FUNCTION
+    public void preOrder(Node node){
+    if(node==null){
+        return;
+    }
+    preOrder(node.left);
+     System.out.println(node.data+" ");
+    preOrder(node.right);
+
+}
+
+//POST ORDER FUNCTION
+    public  void postOrder(Node node){
+        
+    if(node==null){
+        return;
+    }
+    System.out.println(node.data+" ");
+    postOrder(node.left);
+    postOrder(node.right);
+    }
+}
+
+public class Trees {
+
+    public static void main(String args[]) {
+
+        // Create tree
+        BinaryTree tree = new BinaryTree();
+        tree.root = new Node(1);
+        tree.root.left = new Node(2);
+        tree.root.right = new Node(3);
+        tree.root.left.left = new Node(4);
+        tree.root.right.left = new Node(6);
+        tree.root.right.right = new Node(5);
+        tree.root.right.right.right = new Node(7);
+
+        // Print Inorder Traversal
+        System.out.println("Inorder Traversal:");
+        tree.inOrder(tree.root);
+    }
+}
