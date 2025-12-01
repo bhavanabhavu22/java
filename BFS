@@ -1,0 +1,63 @@
+import java.util.*;
+public class Breadth_First_Search_Graphs
+{
+    private Map<Integer,List<Integer>> edge;
+    public Breadth_First_Search_Graphs()
+    {
+        edge=new HashMap<>();
+    }
+    public void addNode(int data)
+    {
+        if (!edge.containsKey(data))
+            edge.put(data, new ArrayList<>());  
+    }
+    public void addEdge(int v,int u)
+    {
+        edge.get(u).add(v);
+        edge.get(v).add(u);
+    }
+    public void print()
+    {
+        for(int i:edge.keySet())
+        System.out.println(i+"->"+edge.get(i));
+    }
+    public void breadth(int data)
+    {
+        Queue<Integer> queue=new LinkedList<>();
+        Set<Integer> visited=new HashSet<>();
+        queue.add(data);
+        visited.add(data);
+        while(!queue.isEmpty())
+        {
+            int current=queue.poll();
+            System.out.print(current+" ");
+            for(int neighbour:edge.get(current))
+            {
+                if(!visited.contains(neighbour))
+                {
+                    visited.add(neighbour);
+                    queue.add(neighbour);
+                }
+            }  
+        }
+        System.out.println();
+    }
+        public static void main(String[] args)
+    {
+        Breadth_First_Search_Graphs bfs=new Breadth_First_Search_Graphs();
+        bfs.addNode(1);
+        bfs.addNode(2);
+        bfs.addNode(3);
+        bfs.addNode(4);
+        bfs.addNode(5);
+        bfs.addNode(2);
+        bfs.addNode(2);
+        bfs.addEdge(1, 2);
+        bfs.addEdge(1, 3);
+        bfs.addEdge(2, 4);
+        bfs.addEdge(3, 5);
+        bfs.addEdge(2, 4);
+        bfs.print();
+        bfs.breadth(2);
+    }
+}
