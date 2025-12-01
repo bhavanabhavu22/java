@@ -1,0 +1,34 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
+import java.util.HashSet;
+
+public class RemoveDuplicates {
+
+    public static void main(String[] args) {
+
+        // Step 1: Create ArrayList with duplicates
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(10);
+        list.add(20);
+        list.add(10);
+        list.add(30);
+        list.add(20);
+        list.add(40);
+
+        System.out.println("Original ArrayList: " + list);
+
+        // Step 2: Add all elements to Queue
+        Queue<Integer> queue = new LinkedList<Integer>();
+        queue.addAll(list);
+
+        System.out.println("Queue intake: " + queue);
+
+        // Step 3: Use Set to remove duplicates
+        Set<Integer> set = new HashSet<Integer>();
+        set.addAll(queue);
+
+        System.out.println("After removing duplicates: " + set);
+    }
+}
