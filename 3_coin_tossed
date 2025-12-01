@@ -1,0 +1,22 @@
+public class CoinPossibilities {
+
+    public static void main(String[] args) {
+
+        char[] coin = {'H', 'T'};  // H = Heads, T = Tails
+        int count = 0;
+
+        System.out.println("All possible outcomes of 3 coin tosses:");
+
+        // Three nested loops for 3 coins
+        for (char c1 : coin) {
+            for (char c2 : coin) {
+                for (char c3 : coin) {
+                    System.out.println("" + c1 + c2 + c3);
+                    count++;
+                }
+            }
+        }
+
+        System.out.println("\nTotal number of possibilities: " + count);
+    }
+}
