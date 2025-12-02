@@ -1,0 +1,154 @@
+class Node {
+    int data;
+    Node left, right;
+    int height;
+
+    Node(int data) {
+        this.data = data;
+        this.height = 1;
+    }
+}
+
+public class AVL_TREE {
+
+    // height of node
+    public static int height(Node root) {
+        if (root == null) 
+            return 0;
+        return root.height;
+    }
+
+    // balance factor = left height - right height
+    public static int getBalance(Node root) {
+        if (root == null) 
+            return 0;
+        return height(root.left) - height(root.right);
+    }
+
+    // Right Rotate
+    public static Node rightRotate(Node y) {
+        Node x = y.left;
+        Node t2 = x.right;
+
+        x.right = y;
+        y.left = t2;
+
+        // update heights
+        y.height = Math.max(height(y.left), height(y.right)) + 1;
+        x.height = Math.max(height(x.left), height(x.right)) + 1;
+
+        return x;
+    }
+
+    // Left Rotate
+    public static Node leftRotate(Node a) {
+        Node b = a.right;
+        Node t2 = b.left;
+
+        b.left = a;
+        a.right = t2;
+
+        // update heights
+        a.height = Math.max(height(a.left), height(a.right)) + 1;
+        b.height = Math.max(height(b.left), height(b.right)) + 1;
+
+        return b;
+    }
+
+    // Insert (AVL balancing)
+    public static Node insert(Node root, int data) {
+        if (root == null)
+            return new Node(data);
+
+        if (data < root.data)
+            root.left = insert(root.left, data);
+        else
+            root.right = insert(root.right, data);
+
+        // update height
+        root.height = Math.max(height(root.left), height(root.right)) + 1;
+
+        int balance = getBalance(root);
+
+        // LEFT LEFT
+        if (balance > 1 && data < root.left.data)
+
+            return rightRotate(root);
+
+        // RIGHT RIGHT
+        if (balance < -1 && data > root.right.data)   
+
+
+            return leftRotate(root);
+
+        // LEFT RIGHT
+        if (balance > 1 && data > root.left.data) {
+            root.left = leftRotate(root.left);
+            System.out.println("\nLeft rotation:"+root.data);
+
+            
+            return rightRotate(root);
+        }
+
+        // RIGHT LEFT
+        if (balance < -1 && data < root.right.data) {
+            root.right = rightRotate(root.right);
+            System.out.println("\nRight rotation:"+root.data);
+            
+            return leftRotate(root);
+        }
+
+        return root;
+    }
+
+    // Inorder traversal
+    public static void inOrder(Node root) {
+        if (root == null) 
+            return;
+        inOrder(root.left);
+        System.out.print(root.data + " ");
+        inOrder(root.right);
+    }
+    //Preorder Traversal
+    public static void preOrder(Node root) {
+        if (root == null) {
+            return;
+        }
+        System.out.print(root.data + " ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+    //Postorder Traversal
+    public static void PostOrder(Node root) {
+        if (root == null) {
+            return;
+        }
+        PostOrder(root.left);
+        PostOrder(root.right);
+        System.out.print(root.data + " ");
+    }
+
+    // main method
+    public static void main(String[] args) {
+        Node root = null;
+
+        root = insert(root, 10);
+        root = insert(root, 20);
+        root = insert(root, 30);
+        root = insert(root, 25);
+        root = insert(root, 28);
+        root = insert(root, 27);
+
+        System.out.println("Height of tree: " + height(root));
+        System.out.println("Balance factor of root: " + getBalance(root));
+
+        System.out.println("Inorder traversal: ");
+        inOrder(root);
+        System.out.println("\npreorder traversal:");
+        preOrder(root);
+        System.out.println("\npostorder traversal:");
+        PostOrder(root);
+        
+
+    }
+}
