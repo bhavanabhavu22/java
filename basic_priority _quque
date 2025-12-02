@@ -1,0 +1,21 @@
+import java.util.Collections;
+import java.util.PriorityQueue;
+
+public class priorityQueue {
+    public static void main(String[] args) {
+        
+        // Creating Priority Queue
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+
+        // Inserting Values
+        pq.add(5);
+        pq.add(15);
+        pq.add(20);
+        System.out.println("Priority Queue: " + pq);
+                pq.poll();
+
+        System.out.println(pq);
+
+        
+    }
+}
