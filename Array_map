@@ -1,0 +1,18 @@
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+public class task{
+    public static void main(String args[]){
+        int[] arr1={1,9,7,6,5,3};
+        int [] arr2={8,5,3,0,0};
+        HashSet<Integer> set=new HashSet<>();
+        for(int i:arr1){
+            set.add(i);
+        }
+        for(int i:arr2){
+            if(set.contains(j)){
+                System.out.pritnln(j+",");
+            }
+        }
+    }
+}
