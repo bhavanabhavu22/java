@@ -1,0 +1,15 @@
+import java.util.HashSet;
+
+public class Duplicates {
+    public static void main(String[] args) {
+        int[] arr = {30, 10, 20, 30, 10, 20, 20, 10};
+        HashSet<Integer> set = new HashSet<>();
+        for (int i : arr) {
+            if (!set.add(i)) {  
+                System.out.println("Array contains duplicates");
+                return; 
+            }
+        }
+        System.out.println("Array does not contain duplicates");
+    }
+}
