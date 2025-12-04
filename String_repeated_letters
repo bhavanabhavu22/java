@@ -1,0 +1,19 @@
+public class String_Algorithm{
+public static void main(String[] args) {
+
+        String str = "abcdacbacabcdbcdabc";
+        String target= "abc";
+
+        int count = 0;
+        int index = str.indexOf(target);   // find first occurrence
+
+        while (index != -1) {
+            System.out.println("\"" + target+ "\" found at index: " + index);
+            count++;
+
+            // find next occurrence after the current index
+            index = str.indexOf(target, index + 1);
+        }
+        System.out.println("\nTotal occurrences of" + target +" = " + count);
+    }
+}
